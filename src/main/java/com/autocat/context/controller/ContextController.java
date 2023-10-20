@@ -1,6 +1,7 @@
 package com.autocat.context.controller;
 
 import brave.Tracer;
+import com.autocat.context.dto.UserDto;
 import com.autocat.context.feign.ExternalClient;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -46,4 +47,11 @@ public class ContextController {
 
         return traceId;
     };
+
+    @GetMapping("/qs")
+    public String getQueryString(UserDto userDto){
+        String id = userDto.getId();
+        return userDto.getId();
+    }
+
 }
