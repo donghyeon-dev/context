@@ -18,5 +18,6 @@ public class UserDto {
     String password;
 
     @ApiModelProperty(value = "유저고유아이디")
+//    int userId;
     Integer userId;
 }
