@@ -12,12 +12,11 @@ import lombok.*;
 public class UserDto {
 
     @ApiModelProperty(value = "아이디")
-    String id;
+    private String id;
 
     @ApiModelProperty(value = "패스워드")
-    String password;
+    private String password;
 
     @ApiModelProperty(value = "유저고유아이디")
-//    int userId;
-    Integer userId;
+    private int userId;
 }

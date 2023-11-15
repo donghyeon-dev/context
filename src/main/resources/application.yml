@@ -1,4 +1,3 @@
-
 server:
   port: 8989
 
@@ -8,4 +7,6 @@ spring:
       matching-strategy: ant_path_matcher
   application:
     name: context
+  zipkin:
+    base-url: http://223.130.146.114:9411
 
