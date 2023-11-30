@@ -3,6 +3,7 @@ package com.autocat.context.controller;
 import brave.Tracer;
 import com.autocat.context.dto.UserDto;
 import com.autocat.context.feign.ExternalClient;
+import com.autocat.context.feign.RpcClient;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,7 @@ public class ContextController {
 
     private final Tracer trace;
     private final ExternalClient externalClient;
+    private final RpcClient rpcClient;
 
     @GetMapping("/span-id")
     public String getSpanId() throws InterruptedException {
@@ -31,6 +33,7 @@ public class ContextController {
             externalClient.getSearchResult();
         }catch(Exception e){
          log.warn("rpcClient.getSearchResult() got error");
+
          e.printStackTrace();
         }
 
@@ -48,10 +51,10 @@ public class ContextController {
         return traceId;
     };
 
-    @GetMapping("/qs")
-    public String getQueryString(UserDto userDto){
-        String id = userDto.getId();
-        return userDto.getId();
+    @GetMapping("/rpc/async")
+    public String runRpcServicesAsync(){
+        rpcClient.runAsync();
+        return "runAsync";
     }
 
 }
